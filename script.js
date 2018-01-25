@@ -15,8 +15,8 @@ $(document).ready(function() {
             word.charAt(0) === "i" || 
             word.charAt(0) === "o" || 
             word.charAt(0) === "u"){
-        return true;
-        } else{
+            return true;
+        } else {
             return false;
         }
     }
@@ -25,13 +25,15 @@ $(document).ready(function() {
     function appendYayToWord(word) {
         return word + "yay";
     }
+    
     // Moves the first consonant to the end of the word, appends "ay" to the end of the word,
     // and returns the word.
     function convertWordWithConsonant(word) {
         var other = word.substring(1);
         var first = word.charAt(0);
-        return other+ first+"ay";
+        return other + first + "ay";
     }
+    
     // If the word starts with a vowel, return the result of appendYayToWord.
     // Otherwise, return the result of convertWordWithConsonant.
     function convertWordToPigLatin(word) {
