@@ -7,21 +7,23 @@
 // igpay, banana becomes ananabay, and aadvark becomes aadvarkway.
 
 $(document).ready(function() {
-    var value = $("#word").val(); 
     // This function should return true if the input word starts with a vowel,
     // otherwise it should return false.
     function wordStartsWithVowel(word) {
-        return word.charAt(0) === "a" || 
-               word.charAt(0) === "e" || 
-               word.charAt(0) === "i" || 
-               word.charAt(0) === "o" || 
-               word.charAt(0) === "u";
+        if (word.charAt(0) === "a" || 
+            word.charAt(0) === "e" || 
+            word.charAt(0) === "i" || 
+            word.charAt(0) === "o" || 
+            word.charAt(0) === "u"){
+        return true;
+        } else{
+            return false;
+        }
     }
 
     // Appends "yay" to the end of the word and returns the word.
     function appendYayToWord(word) {
-        $("body").append("yay");
-        return word;
+        return word + "yay";
     }
     // Moves the first consonant to the end of the word, appends "ay" to the end of the word,
     // and returns the word.
@@ -32,13 +34,11 @@ $(document).ready(function() {
     }
     // If the word starts with a vowel, return the result of appendYayToWord.
     // Otherwise, return the result of convertWordWithConsonant.
-    //function convertWordToPigLatin(word) {
-        if(wordStartsWithVowel === true){
-            appendYayToWord();
-            return word;
-        }else if(wordStartsWithVowel === false){
-            convertWordWithConsonant(word);
-            return word;
+    function convertWordToPigLatin(word) {
+        if(wordStartsWithVowel(word)){
+            return appendYayToWord(word);
+        }else {
+            return convertWordWithConsonant(word);
         }
     }
 
@@ -47,6 +47,7 @@ $(document).ready(function() {
         // Transforms the word to pig latin
         // Displays the result on the screen in the output element
     $("#translate").click(function(){
-        $("body").append(value);
+        var value = $("#word").val(); 
+        $("#result").append(convertWordToPigLatin(value));
     });
 });
